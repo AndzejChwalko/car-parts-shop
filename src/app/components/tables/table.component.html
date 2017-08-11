@@ -1,0 +1,39 @@
+<div class="t-container" >
+	<div class="card ">
+		<div class="card-header">Table title</div>
+		<div class="card-block t-card">
+		<!-- SEARCH -->
+		<div class="form-group">
+		  <div class="col-md-6" >
+		    <input type="text" [(ngModel)]="searchText" 
+		           class="form-control" placeholder="Search..." />
+		  </div>
+		</div>
+		<!-- END SEARCH -->
+
+
+		<table class="table table-bordered table-hover table-sm" >
+			<thead class="t-head">
+				<tr >
+					<th class="clearfix header-cell " *ngFor="let key of keys"  (click)="sort(key)" [ngClass]="{ 'sorted': column == key }">
+						{{key | capitalize}}
+						<i  class="fa pointer sort-arrows float-right" 
+			    			[ngClass]="{'fa-sort': column !== key, 
+			                        'fa-sort-asc': (column == key && !isDesc), 
+			                        'fa-sort-desc': (column == key && isDesc) }"
+			    			aria-hidden="true"> </i>
+		    		</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let obj of objs | search: searchText: keys | orderBy:{property: column, direction: direction}" (click)="goToDetailPage(obj)" >
+					<td class="t-row body-cell font-weight-normal" *ngFor="let  key of keys" [ngClass]="{ 'sorted': column == key }" [innerHTML]="obj[key] | highlight: searchText"></td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	</div>
+</div>
+
+<pre> {{searchText }} </pre>
+<pre> {{keys }} </pre>

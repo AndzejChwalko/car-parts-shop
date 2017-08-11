@@ -1,0 +1,26 @@
+{
+		"properties": {
+			"fullname": {
+				"type": "string",
+				"description": "Full Name",
+				"format": "text"
+			},
+			"phone": {
+				"type": "string",
+				"description" : "Customer phone"
+			},
+			"additions": {
+				"type": "string",
+				"description": "Additional information",
+				"widget": {
+					"id": "textarea"
+				}
+			}
+		},
+		"required": ["fullname", "phone"],
+		"order": ["fullname", "phone", "additions"],
+		"buttons": [{
+			"id": "createCustomer",
+			"label": "Create Customer"			
+		}]
+	}

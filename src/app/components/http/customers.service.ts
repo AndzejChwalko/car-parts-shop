@@ -17,4 +17,12 @@ export class HttpService {
 	doGet(url: string): any {
 		return this.httpService.get( this.URL + url );
 	}
+
+	doGetOne( url: string ): any {
+		return this.httpService.get( this.URL + url );
+	}
+
+	doPost(url: string, body: object): any {
+		return this.httpService.post( this.URL + url, body );
+	}
 }

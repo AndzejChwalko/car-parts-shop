@@ -14,21 +14,21 @@ import { MenuItemService } from './mitem.servece';
 export class MenuItemComponent {
 
 	@Input()
-	iteem;
+	item;
 	
   constructor(){
   }
 
   
   setFaIcon():any{
-  	if(this.iteem.faClass) {
-  		return this.iteem.faClass;
+  	if(this.item.faClass) {
+  		return this.item.faClass;
   	}
   	return "";
   }
 
   setParent(): any{
-  	return this.iteem.parent;
+  	return this.item.parent;
   }
 
 }

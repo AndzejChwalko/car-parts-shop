@@ -1,0 +1,41 @@
+<div *ngIf="schema">
+
+	<button class="btn btn-info"
+			type="button" 
+			data-toggle="collapse" 
+			data-target="#formAdd" 
+			aria-expanded="false" 
+			aria-controls="formAdd" 
+			(click)="collapsed=!collapsed" 
+			[hidden]="collapsed" > {{schema.title}} </button>
+
+	<div class="collapse" id="formAdd">
+		<div class="card collapse" [ngClass]="getWidth()">
+			
+				<div class="card-header">
+					<div class="row">
+						<div class="col-md-10">
+					 		{{schema.title}}
+					 	</div>
+					 <div class="col-md-2 text-right">
+
+						 <a data-toggle="collapse" 
+						 	href="#formAdd" 
+						 	aria-expanded="false" 
+						 	aria-controls="collapseExample" 
+						 	(click)="collapsed=!collapsed">
+
+						 	<i class="fa fa-close fa-2x"> </i>
+						 </a>
+					 </div>
+				 	</div> 
+				</div>
+			
+			<div class="card-block">
+				<sf-form  [schema]="schema" [actions]="actions" [validators]="validators" ></sf-form>
+			</div>
+		</div>
+	</div>
+
+	
+</div>

@@ -3,3 +3,10 @@ body {
 	padding-top: 64px;
 }
 
+.btn-form {
+	margin: 10px;
+}
+
+code {
+	background-color: yellow;
+}

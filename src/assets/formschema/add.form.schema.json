@@ -1,0 +1,33 @@
+{
+		"title": "Create Product",
+		"properties": {
+			"code": {
+				"type": "string",
+				"description": "Code"
+			},
+			"name": {
+				"type": "string",
+				"description": "Name Product"
+			},
+			"description": {
+				"type": "string",
+				"description": "Description Product",
+				"widget": "textarea"
+			},
+			"cost": {
+				"type": "number",
+				"description": "Cost of Product"
+			}
+			},
+		"requires":["code", "name", "cost"],
+		"order":["code", "name", "description", "cost"],
+		"buttons":[{
+			"id": "createProduct",
+			"label" : "Create Product",
+			"class" : "btn btn-primary btn-form"
+			}, {
+			"id": "resetForm",
+			"label" : "Cancel",
+			"class" : "btn btn-secondary btn-form"
+			}]
+}

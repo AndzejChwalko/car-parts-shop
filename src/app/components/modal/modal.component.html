@@ -1,0 +1,27 @@
+<!--
+<div class="modal-wrapper">
+<div [@dialog] *ngIf="visible" class="modal">
+  <ng-content></ng-content>
+  <button *ngIf="closable" (click)="close()" aria-label="Close" class="dialog__close-btn">X</button>
+</div>
+<div *ngIf="visible" class="overlay" (click)="close()"></div>
+</div>
+-->
+<div class="modal-wrapper" [ngClass]="{'opened': visible}">
+  <div class="modal">
+    <div class="head">
+    	
+      <a class="btn-close" >
+        <i class="fa fa-close" aria-hidden="true" (click)="close()"></i>
+      </a>
+     
+    </div>
+    <div class="content">
+    	<ng-content></ng-content>
+        <!-- <div class="good-job">
+          <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+          <h1>Good Job!</h1>
+        </div> -->
+    </div>
+  </div>
+</div>

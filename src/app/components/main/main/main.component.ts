@@ -1,5 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
+//
+//import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { NgClass } from '@angular/common';
+
 import { DataService } from '../../datasharing/data.service';
+import { HttpService } from '../../http/customers.service';
+
+/* add angular2-schema-form in app.module.ts*/
 
 
 @Component({
@@ -9,15 +16,16 @@ import { DataService } from '../../datasharing/data.service';
 })
 export class MainComponent implements OnInit {
 
-
-customers;
 dataServ: DataService;
-  constructor(data: DataService) { 
+httpServ: HttpService;
+
+  constructor(data: DataService, http: HttpService) { 
   	this.dataServ = data;
+  	this.httpServ = http;
   }
 
   ngOnInit() {
-  	this.dataServ.currentHttpGetResult.subscribe(results => this.customers = results);
+  
   }
 
 }

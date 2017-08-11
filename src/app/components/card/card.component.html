@@ -1,0 +1,12 @@
+<div *ngIf="object">
+	<div class="card">
+		<div class="car-block">
+			<h3 class="card-title">{{title}}</h3>
+
+			<ul>
+				<li *ngFor="let key of keys"><b>{{key | capitalize}} :</b> {{object[key]}} </li>
+			</ul>
+		</div>
+
+	</div>
+</div>
