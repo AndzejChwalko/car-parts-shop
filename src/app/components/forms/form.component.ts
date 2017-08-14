@@ -10,7 +10,8 @@ export class FormGeneratorComponent implements OnInit{
 	@Input() schema;
 	@Input() actions;
 	@Input() validations;
-
+	@Input() model;
+	
 	collapsed: boolean = false;
 	@Input() width: number = 50;
 

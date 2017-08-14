@@ -5,7 +5,7 @@ import { HttpClientModule }    from '@angular/common/http';
 import { HttpModule, Http, Response } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { DatePipe } from '@angular/common';
 
 import { AppComponent }      from './app.component';
 import { TopNavComponent }   from './components/navbar/top-nav/top-nav.component';
@@ -19,6 +19,7 @@ import { CardComponent } from './components/card/card.component';
 import { ModalComponent } from './components/modal/modal.component';
 
 import { ButtonCssWidget }   from './components/widgets/button.css.widget';
+import { SelectFromArrayWidget }   from './components/widgets/select.widget';
 import { OwnWidgetRegistry } from './components/widgets/widget.registry';
 
 import { MenuItem }        from './components/main/menu-item/mitem';
@@ -37,6 +38,7 @@ import { CapitalizePipe } from './utils/capitalize.pipe';
 import { OrderrByPipe } from './utils/orderby.pipe';
 import { SearchPipe } from './utils/search.pipe';
 import { HighlightPipe } from './utils/highligh.pipe';
+import { SmartDatePipe } from './utils/date.pipe';
 
 import { OrdersComponent } from './components/entities/orders/orders.component';
 import { OrderDetailsComponent } from './components/entities/orders/details/order.details.component';
@@ -71,7 +73,9 @@ import { SchemaFormModule, WidgetRegistry, DefaultWidgetRegistry } from 'angular
     SearchPipe,
     HighlightPipe,
     CardComponent,
-    ModalComponent
+    ModalComponent,
+    SmartDatePipe,
+    SelectFromArrayWidget
    // Product
 
   ],
@@ -92,7 +96,8 @@ import { SchemaFormModule, WidgetRegistry, DefaultWidgetRegistry } from 'angular
     HttpService,
     DataService,
     FormSchemService,
-    {provide: WidgetRegistry, useClass: OwnWidgetRegistry}
+    {provide: WidgetRegistry, useClass: OwnWidgetRegistry},
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

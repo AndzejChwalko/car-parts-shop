@@ -4,7 +4,7 @@
 			<h3 class="card-title">{{title}}</h3>
 
 			<ul>
-				<li *ngFor="let key of keys"><b>{{key | capitalize}} :</b> {{object[key]}} </li>
+				<li *ngFor="let key of keys"><b>{{key | capitalize}} :</b> {{object[key] | smartdate: {format:'dd-MMM-yy HH:mm:ss', field: key} }} </li>
 			</ul>
 		</div>
 

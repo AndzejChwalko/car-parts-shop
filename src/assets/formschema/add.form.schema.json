@@ -24,7 +24,7 @@
 		"buttons":[{
 			"id": "createProduct",
 			"label" : "Create Product",
-			"class" : "btn btn-primary btn-form"
+			"class" : "btn btn-success btn-form"
 			}, {
 			"id": "resetForm",
 			"label" : "Cancel",

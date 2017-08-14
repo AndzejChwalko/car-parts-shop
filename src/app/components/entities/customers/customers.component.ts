@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { DataService } from '../../datasharing/data.service';
 import { HttpService } from '../../http/customers.service';
 import { FormSchemService } from '../../../services/formschem.service';
+
+import { FormGeneratorComponent } from '../../forms/form.component';
+import { Customer } from './customer';
 
 const CUST_POST_URL: string = '/api/customers';
 const ADD_FORM_PATH: string = 'assets/formschema/add.customer.form.schema.json';
@@ -15,24 +19,38 @@ const ADD_FORM_PATH: string = 'assets/formschema/add.customer.form.schema.json';
 })
 export class CustomersComponent implements OnInit {
 
-	customers: string[];
-	data: DataService;
-	http: HttpService;
-	form: FormSchemService;
+	@Input() customers: string[];
+	private data: DataService;
+	private http: HttpService;
+	private form: FormSchemService;
+	private router: Router;
 
+	private showAddDialog: boolean = false;
+	private customerInstance: Customer = new Customer();
+	/* Form definition */
 	customerSchema = null;
 
 	customerActions = {
 		"createCustomer" : (property) => { 
 			this.addCustomer(property.value);
 			property.reset();
+			this.showAddDialog = false;
+		},
+		"resetForm" : (property) => {
+			property.reset();
+			this.showAddDialog = false;
 		}
 	};
+	/* end form definition */
 
-	constructor(data: DataService, http: HttpService, form: FormSchemService) {
+	constructor( data: DataService,
+				 http: HttpService,
+				 form: FormSchemService,
+				 router: Router) {
 		this.data = data;
 		this.http = http;
 		this.form = form;
+		this.router = router;
 	}
 
 	ngOnInit(){
@@ -50,17 +68,13 @@ export class CustomersComponent implements OnInit {
 
 	addCustomer(customer: object): any{
 	  	this.http.doPost( CUST_POST_URL, customer ).subscribe( response => {
-	  		this.http.doGet( CUST_POST_URL ).subscribe( response => {
-	  			this.customers = response;
-	  		} );
+	  		this.getAllCustomers();
 	  	});
   	}
-  	greet(obj: any):void {
-	  	if(obj.target.localName === 'button'){
-	  		obj.target.className = 'btn btn-primary';
-	  	console.log(obj);
-	  }
-	 }
+  	
+  	goToDetailPage(obj: any) : void{
+		this.router.navigate(['/customers', obj.id]);
+	}
 
 
 }

@@ -25,4 +25,12 @@ export class HttpService {
 	doPost(url: string, body: object): any {
 		return this.httpService.post( this.URL + url, body );
 	}
+
+	doPut( url: string, body: object): any {
+		return this.httpService.put( this.URL + url, body );
+	}
+
+	doDelete( url: string ): any {
+		return this.httpService.delete( this.URL + url );
+	}
 }

@@ -1,4 +1,4 @@
-{		"title": "Create Customer",
+{		"title": "Update Customer",
 		"properties": {
 			"fullname": {
 				"type": "string",
@@ -20,8 +20,8 @@
 		"required": ["fullname", "phone"],
 		"order": ["fullname", "phone", "additions"],
 		"buttons": [{
-			"id": "createCustomer",
-			"label": "Create Customer",
+			"id": "updeteCustomer",
+			"label": "Update Customer",
 			"class": "btn btn-success btn-form"			
 		},{
 			"id": "resetForm",

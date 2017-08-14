@@ -1,4 +1,9 @@
-<div *ngIf="schema">
+<div *ngIf="schema">			
+	<sf-form  [schema]="schema" [actions]="actions" [validators]="validators" [model]="model"></sf-form>
+</div>
+
+<!-- Вариант с применением data-toggle и collapse -->
+<!--<div *ngIf="schema">
 
 	<button class="btn btn-info"
 			type="button" 
@@ -7,10 +12,10 @@
 			aria-expanded="false" 
 			aria-controls="formAdd" 
 			(click)="collapsed=!collapsed" 
-			[hidden]="collapsed" > {{schema.title}} </button>
+			[hidden]="collapsed" > {{schema.title}} </button> 
 
-	<div class="collapse" id="formAdd">
-		<div class="card collapse" [ngClass]="getWidth()">
+	<div class="collapse" id="formAdd"> 
+		<div class="card " [ngClass]="getWidth()">
 			
 				<div class="card-header">
 					<div class="row">
@@ -31,11 +36,11 @@
 				 	</div> 
 				</div>
 			
-			<div class="card-block">
+			<div class="card-block"> 
 				<sf-form  [schema]="schema" [actions]="actions" [validators]="validators" ></sf-form>
 			</div>
 		</div>
 	</div>
 
 	
-</div>
+</div>-->

@@ -22,7 +22,7 @@
 		"requires":["code", "name", "cost"],
 		"order":["code", "name", "description", "cost"],
 		"buttons":[{
-			"id": "createProduct",
+			"id": "updateProduct",
 			"label" : "Update Product",
 			"class" : "btn btn-primary btn-form"
 			}, {

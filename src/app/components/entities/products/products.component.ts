@@ -26,7 +26,10 @@ export class ProductsComponent implements OnInit {
 	private http: HttpService;
 	private formSchema: FormSchemService;
 	private router: Router;
-	//collapsed: boolean = false;
+
+	private showAddDialog: boolean = false;
+
+	
 	/* Form definition */
 	productSchema = null;
 
@@ -34,8 +37,12 @@ export class ProductsComponent implements OnInit {
 		"createProduct": (property) => {
 			this.addProduct(property.value);
 			property.reset();
+			this.showAddDialog = false;
 		},
-		"resetForm": (property) => {property.reset()}
+		"resetForm": (property) => {
+			property.reset();
+			this.showAddDialog = false;
+		}
 	}
 	/* form definition end */
 
@@ -66,10 +73,6 @@ export class ProductsComponent implements OnInit {
 		this.http.doPost( PRODUCT_POST_URL, obj ).subscribe( result => {
 			this.getAllProducts();
 		})
-	}
-
-	gree(a:string): void{
-		console.log(a);
 	}
 
 	goToDetailPage(obj: any) : void{

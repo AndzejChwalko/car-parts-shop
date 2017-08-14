@@ -1,27 +1,14 @@
 <p>This is Customers page</p>
 
 <!-- ADD CUSTOMER FORM -->
+<button type="button" class="btn btn-primary btn-detail" (click)="showAddDialog = !showAddDialog">Add new customer</button>
+
+<!-- Modal here -->
 <div *ngIf="customerSchema">
-	<sf-form [schema]="customerSchema" [actions]="customerActions" (DOMNodeInserted)="greet($event)"></sf-form>
+	<modal [visible]="showAddDialog" [title]="customerSchema.title">
+	<generated-form [schema]="customerSchema" [actions]="customerActions" [width]="100"></generated-form>
+</modal>
 </div>
 
-<!-- <pre>{{customers | json}}</pre> -->
-<br>
-<table class="table">
-	<thead>
-		<tr>
-			<th>#</th>
-			<th>Full Name</th>
-			<th>Phone</th>	
-			<th>Additions</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr *ngFor="let customer of customers; let i = index;" >
-			<th> {{i+1}} </th>
-			<th> {{customer.fullname}} </th>
-			<th> {{customer.phone}} </th>
-			<th> {{customer.additions}} </th>
-		</tr>
-	</tbody>
-</table>
+
+<generated-table [objs]="customers" [instance]="customerInstance"></generated-table>

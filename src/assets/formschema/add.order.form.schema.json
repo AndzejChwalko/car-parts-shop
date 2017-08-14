@@ -1,0 +1,40 @@
+{
+	"title": "Create Order",
+	"properties": {
+		"code" : {
+			"type": "string",
+			"description": "Code"
+		},
+		"customer": {
+			"type" : "string",
+			"description": "Choose Customer",
+			"widget": "arrselect"
+		},
+		"paid": {
+			"type": "boolean",
+			"default": false,
+			"description": "Order paid"
+		},
+		
+		"additions": {
+			"type": "string",
+			"description": "Write additional information about the order",
+			"widget": "textarea"
+		},
+		"products": {
+
+		}
+
+	},
+	"required":[],
+	"order":[],
+	"buttons":[{
+		"id": "createOrder",
+		"label": "Create Order",
+		"class": "btn btn-success btn-form"
+	},{
+		"id": "resetForm",
+		"label": "Cancel",
+		"class": "btn btn-secondary btn-form"
+	}]
+}

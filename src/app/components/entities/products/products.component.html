@@ -1,7 +1,14 @@
 <p>This is Products page</p>
 
 <!-- FORM WILL BE HERE -->
-<generated-form [schema]="productSchema" [actions]="productActions" [width]="50"></generated-form>
+<!--<generated-form [schema]="productSchema" [actions]="productActions" [width]="50"></generated-form>-->
+<button type="button" class="btn btn-primary btn-detail" (click)="showAddDialog = !showAddDialog">Add new product</button>
+
+<div *ngIf="productSchema">
+	<modal [visible]="showAddDialog" [title]="productSchema.title">
+	<generated-form [schema]="productSchema" [actions]="productActions" [width]="100"></generated-form>
+</modal>
+</div>
 
 
 <!-- TABLE WILL BE HERE -->

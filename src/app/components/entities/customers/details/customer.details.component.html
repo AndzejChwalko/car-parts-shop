@@ -1,1 +1,38 @@
 <p>This is Customer details page</p>
+
+<entity-view [keys]="keys" [object]="customer"></entity-view>
+
+<button type="button" class="btn btn-info btn-detail" (click)="goBack()">Go Back</button>
+ 
+<button type="button" class="btn btn-primary btn-detail" (click)="showEditDialog = !showEditDialog">Edit</button>
+
+<button type="button" class="btn btn-danger btn-detail" (click)="showYouSureDialog = !showYouSureDialog"> Delete </button>
+
+
+<!-- Update Modal Dialog -->
+<div *ngIf="schema">
+	<modal [visible]="showEditDialog" [title]="schema.title" [modalWidth]="50">
+		<generated-form [model]="customer" [schema]="schema" [actions]="actions" [width]="100"></generated-form>
+	</modal>
+</div>
+
+<!--Deleting / Are you sure modal dialog -->
+<div *ngIf="customer">
+	<modal [visible]="showYouSureDialog" [title]="youSureDialogTitle" [danger]="true" [modalWidth]="40">
+		<div class="row clearfix">
+			<div class="col-md-3 align-self-center" >
+				<i class="fa fa-3x fa-warning float-right "></i>
+			</div>
+			<div class="col-md-9">
+				<h4 class="float-center" >"{{customer.fullname}}" will be deleted.</h4>
+				<h4 class="float-center">Are you sure?</h4>
+			</div>
+		</div>
+		<div class="row ">
+			<div class="col-12 text-center">
+				<button type="button" class="btn btn-danger btn-modal-delete" (click)="deleteCustomer()" >I'm sure. Delete this.</button>
+				<button type="button" class="btn btn-secondary btn-modal-delete" (click)="cancel()" >Not.</button>
+			</div>
+		</div>
+	</modal>
+</div>

@@ -23,12 +23,24 @@ export class ProductDetailsComponent implements OnInit {
 	private product: object;
 	private keys: string[] = Object.keys( new Product() );
 
-	showEditDialog: boolean = false;
+	private showEditDialog: boolean = false;
+	private showYouSureDialog: boolean = false;
+	private youSureDialogTitle: string = "Deleting entity";
 
 	private schema = null;
 	private actions = {
-		"updateProduct": (property) => {},
-		"resetForm": (property) => {}
+		"updateProduct": (property) => {
+			this.http.doPut( (URL + this.route.url), property.value ).subscribe( result => {
+				this.http.doGetOne ( URL + this.route.url ).subscribe( result => {
+					this.product = result;
+				});
+			});
+			this.showEditDialog = false;
+		},
+		"resetForm": (property) => {
+			property.reset();
+			this.showEditDialog = false;
+		}
 	}
 	//private validators:
 
@@ -50,5 +62,17 @@ export class ProductDetailsComponent implements OnInit {
 
 	goBack(){
 		this.location.back();
+	}
+
+	deleteProduct(): void {
+		this.http.doDelete( (URL + this.route.url )).subscribe( result => {
+			this.showYouSureDialog = false;
+			this.goBack();
+		});
+		
+	}
+
+	cancel(): void {
+		this.showYouSureDialog = false;
 	}
 }
